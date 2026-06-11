@@ -1,0 +1,394 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --panel-soft: #eef4ff;
+  --text: #172033;
+  --muted: #69758a;
+  --primary: #3568ff;
+  --primary-dark: #224bd2;
+  --border: #dfe6f2;
+  --shadow: 0 20px 45px rgba(39, 54, 89, 0.12);
+  --danger: #d94747;
+  --success: #1f9d63;
+  font-family: Inter, Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(53, 104, 255, 0.16), transparent 34rem),
+    linear-gradient(135deg, #f8fbff 0%, var(--bg) 100%);
+  color: var(--text);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 40px 0 56px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--primary);
+  font-size: 0.83rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+}
+
+.hero-copy {
+  max-width: 620px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.hero-card,
+.planner-card,
+.toolbar,
+.column {
+  border: 1px solid rgba(223, 230, 242, 0.9);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.hero-card {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  border-radius: 30px;
+  padding: 28px;
+}
+
+.hero-card span,
+.hero-card small {
+  color: var(--muted);
+}
+
+.hero-card strong {
+  font-size: 2.4rem;
+  letter-spacing: -0.04em;
+}
+
+.planner-card,
+.toolbar {
+  border-radius: 28px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.section-heading h2,
+.toolbar h2 {
+  margin-bottom: 6px;
+  font-size: 1.35rem;
+}
+
+.section-heading p,
+.toolbar p,
+.column header p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.task-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 14px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  color: #3a4558;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+label.wide {
+  grid-column: 1 / -2;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fbfdff;
+  color: var(--text);
+  padding: 13px 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(53, 104, 255, 0.12);
+}
+
+.task-form button[type="submit"] {
+  align-self: end;
+  min-height: 48px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--primary);
+  color: white;
+  font-weight: 800;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.task-form button[type="submit"]:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.filter-group {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 999px;
+  background: var(--panel-soft);
+}
+
+.filter {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 16px;
+  font-weight: 800;
+}
+
+.filter.active {
+  background: var(--panel);
+  color: var(--primary);
+  box-shadow: 0 8px 18px rgba(39, 54, 89, 0.1);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.column {
+  min-height: 360px;
+  border-radius: 28px;
+  padding: 20px;
+}
+
+.column header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.column-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 16px;
+  background: var(--panel-soft);
+  font-size: 1.35rem;
+}
+
+.column h3 {
+  margin-bottom: 4px;
+}
+
+.task-list {
+  display: grid;
+  gap: 12px;
+  min-height: 240px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.task-item {
+  display: grid;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: #fff;
+  padding: 16px;
+}
+
+.task-item.done {
+  opacity: 0.62;
+}
+
+.task-title-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.task-title-row strong {
+  line-height: 1.35;
+}
+
+.badge {
+  flex: none;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.badge.high {
+  background: #ffe7e7;
+  color: #bd3030;
+}
+
+.badge.medium {
+  background: #fff4d6;
+  color: #936900;
+}
+
+.badge.low {
+  background: #e8f8ef;
+  color: #14784b;
+}
+
+.task-meta,
+.task-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.task-actions button {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #f8fbff;
+  padding: 9px 10px;
+  color: #40506a;
+  font-weight: 800;
+}
+
+.task-actions .delete {
+  color: var(--danger);
+}
+
+.empty-state {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  border: 1px dashed var(--border);
+  border-radius: 20px;
+  color: var(--muted);
+  text-align: center;
+  padding: 24px;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .board,
+  .task-form {
+    grid-template-columns: 1fr;
+  }
+
+  label.wide {
+    grid-column: auto;
+  }
+
+  .toolbar,
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 24px;
+  }
+
+  .planner-card,
+  .toolbar,
+  .column,
+  .hero-card {
+    border-radius: 22px;
+    padding: 18px;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter {
+    flex: 1;
+    padding-inline: 10px;
+  }
+}

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>업무 일정 도우미</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="app-title">
+        <div>
+          <p class="eyebrow">Daily · Weekly · Monthly Planner</p>
+          <h1 id="app-title">업무 일정 도우미</h1>
+          <p class="hero-copy">
+            오늘 해야 할 일부터 이번 주 집중 업무, 이번 달 목표까지 한 화면에서 정리하세요.
+          </p>
+        </div>
+        <div class="hero-card" aria-label="오늘 요약">
+          <span id="today-label"></span>
+          <strong id="today-count">0개 업무</strong>
+          <small>완료하지 않은 오늘의 업무</small>
+        </div>
+      </section>
+
+      <section class="planner-card" aria-labelledby="form-title">
+        <div class="section-heading">
+          <h2 id="form-title">새 업무 추가</h2>
+          <p>일정 범위와 우선순위를 선택하면 자동으로 보드에 정리됩니다.</p>
+        </div>
+        <form id="task-form" class="task-form">
+          <label>
+            업무명
+            <input id="task-title" type="text" placeholder="예: 고객사 제안서 작성" required />
+          </label>
+          <label>
+            일정 범위
+            <select id="task-scope" required>
+              <option value="daily">일일</option>
+              <option value="weekly">주간</option>
+              <option value="monthly">월간</option>
+            </select>
+          </label>
+          <label>
+            마감일
+            <input id="task-date" type="date" required />
+          </label>
+          <label>
+            우선순위
+            <select id="task-priority" required>
+              <option value="high">높음</option>
+              <option value="medium" selected>보통</option>
+              <option value="low">낮음</option>
+            </select>
+          </label>
+          <label class="wide">
+            메모
+            <textarea id="task-note" rows="3" placeholder="회의 링크, 참고 자료, 진행 방식 등을 적어두세요."></textarea>
+          </label>
+          <button type="submit">업무 추가하기</button>
+        </form>
+      </section>
+
+      <section class="toolbar" aria-label="업무 필터">
+        <div>
+          <h2>일정 보드</h2>
+          <p id="status-text">등록된 업무를 일정 범위별로 확인하세요.</p>
+        </div>
+        <div class="filter-group" role="group" aria-label="업무 보기 필터">
+          <button class="filter active" type="button" data-filter="all">전체</button>
+          <button class="filter" type="button" data-filter="open">진행중</button>
+          <button class="filter" type="button" data-filter="done">완료</button>
+        </div>
+      </section>
+
+      <section class="board" aria-live="polite">
+        <article class="column" data-scope="daily">
+          <header>
+            <span class="column-icon">☀️</span>
+            <div>
+              <h3>일일 업무</h3>
+              <p>오늘 바로 처리할 작업</p>
+            </div>
+          </header>
+          <ul id="daily-list" class="task-list"></ul>
+        </article>
+        <article class="column" data-scope="weekly">
+          <header>
+            <span class="column-icon">🗓️</span>
+            <div>
+              <h3>주간 업무</h3>
+              <p>이번 주 안에 끝낼 작업</p>
+            </div>
+          </header>
+          <ul id="weekly-list" class="task-list"></ul>
+        </article>
+        <article class="column" data-scope="monthly">
+          <header>
+            <span class="column-icon">🎯</span>
+            <div>
+              <h3>월간 업무</h3>
+              <p>장기 목표와 마일스톤</p>
+            </div>
+          </header>
+          <ul id="monthly-list" class="task-list"></ul>
+        </article>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
